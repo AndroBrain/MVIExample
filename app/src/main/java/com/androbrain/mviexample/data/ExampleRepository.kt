@@ -6,6 +6,6 @@ class ExampleRepository {
     suspend fun sendMessage(text: String) {
         // Do networking or local data storage alterations here
         // this delay is just a mock
-        delay(5000L)
+        delay(3000L)
     }
 }

@@ -18,6 +18,7 @@ class ExampleViewModel(
         when (event) {
             ExampleEvent.SendClicked -> sendClicked()
             is ExampleEvent.TextChanged -> textChanged(event)
+            ExampleEvent.MessageShown -> messageShown()
         }
     }
 
@@ -25,11 +26,21 @@ class ExampleViewModel(
         _state.update { state -> state.copy(isLoading = true) }
         viewModelScope.launch {
             repository.sendMessage(state.value.text)
-            _state.update { state -> state.copy(text = "", isLoading = false) }
+            _state.update { state ->
+                state.copy(
+                    text = "",
+                    isLoading = false,
+                    message = "Message sent successfully",
+                )
+            }
         }
     }
 
     private fun textChanged(data: ExampleEvent.TextChanged) {
         _state.update { state -> state.copy(text = data.text) }
+    }
+
+    private fun messageShown() {
+        _state.update { state -> state.copy(message = null) }
     }
 }
