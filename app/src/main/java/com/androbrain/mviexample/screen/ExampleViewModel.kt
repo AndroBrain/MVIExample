@@ -2,13 +2,15 @@ package com.androbrain.mviexample.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
+import com.androbrain.mviexample.data.ExampleRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ExampleViewModel : ViewModel() {
+class ExampleViewModel(
+    private val repository: ExampleRepository = ExampleRepository(),
+) : ViewModel() {
     private val _state = MutableStateFlow(ExampleState())
     val state = _state.asStateFlow()
 
@@ -22,7 +24,7 @@ class ExampleViewModel : ViewModel() {
     private fun sendClicked() {
         _state.update { state -> state.copy(isLoading = true) }
         viewModelScope.launch {
-            delay(5000L)
+            repository.sendMessage(state.value.text)
             _state.update { state -> state.copy(text = "", isLoading = false) }
         }
     }
