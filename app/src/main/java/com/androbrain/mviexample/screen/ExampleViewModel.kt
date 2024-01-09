@@ -23,13 +23,13 @@ class ExampleViewModel(
     }
 
     private fun sendClicked() {
-        _state.update { state -> state.copy(isLoading = true) }
+        _state.update { state -> state.copy(isSending = true) }
         viewModelScope.launch {
             repository.sendMessage(state.value.text)
             _state.update { state ->
                 state.copy(
                     text = "",
-                    isLoading = false,
+                    isSending = false,
                     message = "Message sent successfully",
                 )
             }

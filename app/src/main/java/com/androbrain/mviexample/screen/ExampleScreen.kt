@@ -31,7 +31,7 @@ fun ExampleScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        if (state.isLoading) {
+        if (state.isSending) {
             CircularProgressIndicator()
         } else {
             OutlinedTextField(
