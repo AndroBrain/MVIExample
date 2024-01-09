@@ -30,7 +30,7 @@ class ExampleViewModel(
                 state.copy(
                     text = "",
                     isSending = false,
-                    message = "Message sent successfully",
+                    result = "Message sent successfully",
                 )
             }
         }
@@ -41,6 +41,6 @@ class ExampleViewModel(
     }
 
     private fun messageShown() {
-        _state.update { state -> state.copy(message = null) }
+        _state.update { state -> state.copy(result = null) }
     }
 }

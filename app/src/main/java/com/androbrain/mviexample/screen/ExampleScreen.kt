@@ -20,9 +20,9 @@ fun ExampleScreen(
     sendEvent: (ExampleEvent) -> Unit,
 ) {
     val context = LocalContext.current
-    LaunchedEffect(state.message) {
-        if (state.message != null) {
-            Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+    LaunchedEffect(state.result) {
+        if (state.result != null) {
+            Toast.makeText(context, state.result, Toast.LENGTH_SHORT).show()
             sendEvent(ExampleEvent.MessageShown)
         }
     }
