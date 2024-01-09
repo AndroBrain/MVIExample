@@ -1,1 +1,1 @@
-![mvi](https://github.com/AndroBrain/MVIExample/assets/75139757/f863973b-be8a-4744-8f74-047c759fcbf5)
+![mvi-ezgif com-resize](https://github.com/AndroBrain/MVIExample/assets/75139757/2cf06a17-0159-4451-98b3-24daf7e6617b)
